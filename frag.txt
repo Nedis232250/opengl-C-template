@@ -1,0 +1,8 @@
+#version 330 core
+
+in vec4 vrgba_t;
+out vec4 FragColor;
+
+void main() {
+    FragColor = vrgba_t;
+}
