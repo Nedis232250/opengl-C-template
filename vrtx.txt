@@ -3,13 +3,12 @@
 in vec3 vpos;
 in vec4 vrgba;
 out vec4 vrgba_t;
-uniform float camera_pos;
 
 vec3 vpos_math = vpos;
 
-float x_angle = 45.0;
-float y_angle = 0.0;
-float z_angle = 0.0;
+uniform float x_angle;
+uniform float y_angle;
+uniform float z_angle;
 
 mat3 xrot_mat = mat3(vec3(1.0, 0.0, 0.0), vec3(0.0, cos(radians(x_angle)), -sin(radians(x_angle))), vec3(0.0, sin(radians(x_angle)), cos(radians(x_angle))));
 mat3 yrot_mat = mat3(vec3(cos(radians(y_angle)), 0.0, sin(radians(y_angle))), vec3(0.0, 1.0, 0.0), vec3(-sin(radians(y_angle)), 0.0, cos(radians(y_angle))));
