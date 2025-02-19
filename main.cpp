@@ -7,6 +7,10 @@
 #include "shader.h"
 #include "buffer.h"
 
+float x_angle = 0.0f;
+float y_angle = 0.0f;
+float z_angle = 0.0f;
+
 GLFWwindow* initalize_GLFW_GLEW() {
     if (!glfwInit()) {
         std::cout << "GLFW initialization failed\n";
@@ -30,11 +34,11 @@ GLFWwindow* initalize_GLFW_GLEW() {
     return window;
 }
 
-
 int main() {
     GLFWwindow* window = initalize_GLFW_GLEW();
-    if (!window) return -1;
-
+    if (!window) {
+        return -1;
+    }
 
     float vertices[] = {
         -0.25f, 0.25f, 0.0, 1.0, 0.0, 0.0, 1.0,
@@ -61,6 +65,10 @@ int main() {
     glVertexAttribPointer(glGetAttribLocation(shader_program, "vrgba"), 4, GL_FLOAT, 0, 7 * sizeof(float), (const void*)(3 * sizeof(float)));
 
     glUseProgram(shader_program);
+
+    glUniform1f(glGetUniformLocation(shader_program, "x_angle"), x_angle);
+    glUniform1f(glGetUniformLocation(shader_program, "y_angle"), y_angle);
+    glUniform1f(glGetUniformLocation(shader_program, "z_angle"), z_angle);
 
     while (!glfwWindowShouldClose(window)) {
         glClear(GL_COLOR_BUFFER_BIT);
