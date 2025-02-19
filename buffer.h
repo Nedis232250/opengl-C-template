@@ -28,3 +28,8 @@ public:
         glDeleteBuffers(1, &buffer);
     }
 };
+
+template<typename T> void edit_buffer(uint32_t buffer, uint32_t target, T* data, size_t size) {
+    glBindBuffer(target, buffer);
+    glBufferData(target, size, data, GL_STATIC_DRAW);
+}
